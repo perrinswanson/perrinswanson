@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>$(pagetitle)</title>
+        
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        
+        <link rel="stylesheet" href="style/main.css" />
+    </head>
+    <body>
+        <div id="background"></div>
+        <script>
+            const sizes = [
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                2, 2, 2, 2, 2,
+                2, 2, 2, 2, 2,
+                3, 3, 3,
+                4, 4,
+                5
+            ]
+            const colours = [
+                "white", "white", "white", "white", "white", "white", "white", "white", "white", "white",
+                "white", "white", "white", "white", "white", "white", "white", "white", "white", "white",
+                "#fffab8", "#fffab8",
+                "#ffaa3b", "#ffaa3b",
+                "#c40000", "#c40000",
+                "#abfff4", "#abfff4"
+            ]
+            const speeds = [
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                2, 2, 2, 2, 2,
+                5, 5, 5,
+                10
+            ]
+
+            class Star {
+                constructor(element) {
+                    this.element = element
+                    this.reset(false)
+                }
+
+                reset(end) {
+                    this.size = sizes[Math.floor(Math.random() * sizes.length)]
+                    this.colour = colours[Math.floor(Math.random() * colours.length)]
+                    this.movementSpeed = speeds[Math.floor(Math.random() * speeds.length)]
+                    this.alphaSpeed = speeds[Math.floor(Math.random() * speeds.length)]
+                    
+                    if (end) {
+                        this.left = screen.width + 10
+                    } else {
+                        this.left = Math.floor(Math.random() * screen.width)
+                    }
+                    this.alpha = Math.random()
+                    this.increaseAlpha = Math.random() < 0.5
+                    
+                    this.element.style.width = this.size + "px"
+                    this.element.style.height = this.size + "px"
+                    this.element.style.borderRadius = (this.size / 2) + "px"
+                    this.element.style.opacity = this.alpha
+
+                    this.element.style.left = this.left + "px"
+                    this.element.style.top = Math.floor(Math.random() * screen.height) + "px"
+
+                    this.element.style.backgroundColor = this.colour
+                    this.element.style.boxShadow = "0px 0px " + this.size + "px " + this.size + "px " + this.colour
+                }
+
+                updateOpacity() {
+                    if (this.increaseAlpha) {
+                        this.alpha += this.alphaSpeed / 1000
+                    } else {
+                        this.alpha -= this.alphaSpeed / 1000
+                    }
+
+                    if (this.alpha < 0) {
+                        this.alpha = 0
+                        this.increaseAlpha = true
+                    }
+                    if (this.alpha > 1) {
+                        this.alpha = 1
+                        this.increaseAlpha = false
+                    }
+                    this.element.style.opacity = this.alpha
+                }
+
+                updatePosition() {
+                    this.left -= this.movementSpeed / 10
+
+                    if (this.left < -10) {
+                        console.log("RESET")
+                        this.reset(true)
+                    } else {
+                        this.element.style.left = Math.floor(this.left) + "px"
+                    }
+                }
+            }
+
+            const min = screen.width / 8
+            const max = screen.width / 4
+            const count = min + (Math.random() * (max - min))
+
+            const stars = []
+            const backgroundElement = document.getElementById("background")
+
+            for (i = 0; i < count; i++) {
+                const element = document.createElement("div")
+                element.className = "star"
+
+                stars.push(new Star(element))
+                
+                backgroundElement.appendChild(element)
+            }
+
+            setInterval(function() {
+                for (star of stars) {
+                    star.updateOpacity()
+                    star.updatePosition()
+                }
+            }, 10)
+        </script>
+
+        <div id="main">
+            <% @yield %>
+        </div>
+    </body>
+</html>
