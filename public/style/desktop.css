@@ -1,0 +1,20 @@
+
+body {
+    font-size: 16pt;
+}
+
+h1 {
+    font-size: 48pt;
+}
+
+h2 {
+    font-size: 24pt;
+}
+
+.mobile-only {
+    display: none;
+}
+
+#main .section {
+    display: inline-block;
+}

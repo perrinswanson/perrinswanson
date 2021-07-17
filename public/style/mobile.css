@@ -1,0 +1,20 @@
+
+body {
+    font-size: 14pt;
+}
+
+h1 {
+    font-size: 32pt;
+}
+
+h2 {
+    font-size: 20pt;
+}
+
+.desktop-only {
+    display: none;
+}
+
+#main .section {
+    display: block;
+}
