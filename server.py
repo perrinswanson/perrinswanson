@@ -1,31 +1,31 @@
 
-import bottle
+from bottle import template, run, static_file, get
 
 # Increase the version to force CSS reload
 VERSION = 0
 
 def page(name, **kwargs):
-    return bottle.template(f'pages/{name}.py', version=VERSION, **kwargs)
+    return template(f'pages/{name}.py', version=VERSION, **kwargs)
 
 def start(port=8080, debug=False):
-    bottle.run(port=port, debug=debug)
+    run(port=port, debug=debug)
 
 # =============================================================
 # Static Files
 # =============================================================
 
-@bottle.get('/style/<name:path>')
+@get('/style/<name:path>')
 def style(name):
-    return bottle.static_file(name, root='./style')
+    return static_file(name, root='./style')
 
-@bottle.get('/images/<name:path>')
+@get('/images/<name:path>')
 def images(name):
-    return bottle.static_file(name, root='./images')
+    return static_file(name, root='./images')
 
 # =============================================================
 # HTML
 # =============================================================
 
-@bottle.get('/')
-def index():
+@get('/')
+def index_page():
     return page('index')
