@@ -3,94 +3,98 @@
 
 <div id="background"></div>
 <script>
-    const sizes = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        2, 2, 2, 2, 2,
-        2, 2, 2, 2, 2,
-        3, 3, 3,
-        4, 4,
-        5
-    ]
-    const colours = [
-        "white", "white", "white", "white", "white", "white", "white", "white", "white", "white",
-        "white", "white", "white", "white", "white", "white", "white", "white", "white", "white",
-        "#fffab8", "#fffab8",
-        "#ffaa3b", "#ffaa3b",
-        "#c40000", "#c40000",
-        "#abfff4", "#abfff4"
-    ]
-    const speeds = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        2, 2, 2, 2, 2,
-        5, 5, 5,
-        10
-    ]
+    const sizes = Array.prototype.concat(
+        Array(20).fill(1),
+        Array(10).fill(2),
+        Array(3).fill(3),
+        Array(2).fill(4),
+        Array(1).fill(5)
+    );
+    const colours = Array.prototype.concat(
+        Array(10).fill("#FFFFFF"),
+        Array(1).fill("#FFFAB8"),
+        Array(1).fill("#FFAA3B"),
+        Array(1).fill("#C40000"),
+        Array(1).fill("#abfff4")
+    );
+    const alphaSpeeds = Array.prototype.concat(
+        Array(20).fill(1),
+        Array(2).fill(2),
+        Array(2).fill(4),
+        Array(1).fill(5)
+    );
+    const movementSpeeds = Array.prototype.concat(
+        Array(20).fill(1),
+        Array(5).fill(2),
+        Array(3).fill(5),
+        Array(1).fill(10)
+    );
     
     class Star {
-        constructor(element) {
-            this.element = element
-            this.reset(false)
+        constructor(element, shouldUpdateOpacity, shouldUpdatePosition) {
+            this.element = element;
+            this.shouldUpdateOpacity = shouldUpdateOpacity;
+            this.shouldUpdatePosition = shouldUpdatePosition;
+            this.reset(false);
         }
         
         reset(end) {
-            this.size = sizes[Math.floor(Math.random() * sizes.length)] / 2
-            this.colour = colours[Math.floor(Math.random() * colours.length)]
-            this.movementSpeed = speeds[Math.floor(Math.random() * speeds.length)]
-            this.alphaSpeed = speeds[Math.floor(Math.random() * speeds.length)]
+            this.size = sizes[Math.floor(Math.random() * sizes.length)] / 2;
+            this.colour = colours[Math.floor(Math.random() * colours.length)];
+            this.movementSpeed = alphaSpeeds[Math.floor(Math.random() * alphaSpeeds.length)];
+            this.alphaSpeed = movementSpeeds[Math.floor(Math.random() * movementSpeeds.length)];
             
             if (end) {
-                this.left = screen.width + 10
+                this.left = screen.width + 10;
             } else {
-                this.left = Math.floor(Math.random() * screen.width)
+                this.left = Math.floor(Math.random() * screen.width);
             }
-            this.alpha = Math.random()
-            this.increaseAlpha = Math.random() < 0.5
+            this.alpha = Math.random();
+            this.increaseAlpha = Math.random() < 0.5;
             
-            this.element.style.width = this.size + "px"
-            this.element.style.height = this.size + "px"
-            this.element.style.borderRadius = (this.size / 2) + "px"
-            this.element.style.opacity = this.alpha
-
-            this.element.style.left = this.left + "px"
-            this.element.style.top = Math.floor(Math.random() * screen.height) + "px"
-
-            this.element.style.backgroundColor = this.colour
-            this.element.style.boxShadow = "0px 0px " + this.size + "px " + this.size + "px " + this.colour
+            this.element.style.width = this.size + "px";
+            this.element.style.height = this.size + "px";
+            this.element.style.borderRadius = (this.size / 2) + "px";
+            this.element.style.opacity = this.alpha;
+            
+            this.element.style.left = this.left + "px";
+            this.element.style.top = Math.floor(Math.random() * screen.height) + "px";
+            
+            this.element.style.backgroundColor = this.colour;
+            this.element.style.boxShadow = "0px 0px " + this.size + "px " + this.size + "px " + this.colour;
         }
         
         updateOpacity() {
             if (this.increaseAlpha) {
-                this.alpha += this.alphaSpeed / 1000
+                this.alpha += this.alphaSpeed / 2000;
             } else {
-                this.alpha -= this.alphaSpeed / 1000
+                this.alpha -= this.alphaSpeed / 2000;
             }
-
+            
             if (this.alpha < 0) {
-                this.alpha = 0
-                this.increaseAlpha = true
+                this.alpha = 0;
+                this.increaseAlpha = true;
             }
             if (this.alpha > 1) {
-                this.alpha = 1
-                this.increaseAlpha = false
+                this.alpha = 1;
+                this.increaseAlpha = false;
             }
-            this.element.style.opacity = this.alpha
+            this.element.style.opacity = this.alpha;
         }
         
         updatePosition() {
-            this.left -= this.movementSpeed / 10
-
+            this.left -= this.movementSpeed / 10;
+            
             if (this.left < -10) {
-                this.reset(true)
+                this.reset(true);
             } else {
-                this.element.style.left = Math.floor(this.left) + "px"
+                this.element.style.left = Math.floor(this.left) + "px";
             }
         }
     }
     
-    const min = screen.width / 8
-    const max = screen.width / 4
+    const min = screen.width / 6
+    const max = screen.width / 3
     const count = min + (Math.random() * (max - min))
     
     const stars = []
@@ -99,18 +103,24 @@
     for (i = 0; i < count; i++) {
         const element = document.createElement("div")
         element.className = "star"
+        const shouldUpdateOpacity = Math.random() < 0.6
+        const shouldUpdatePosition = Math.random() < 0.4
         
-        stars.push(new Star(element))
+        stars.push(new Star(element, shouldUpdateOpacity, shouldUpdatePosition))
         
         backgroundElement.appendChild(element)
     }
     
     setInterval(function() {
         for (star of stars) {
-            star.updateOpacity()
-            star.updatePosition()
+            if (star.shouldUpdateOpacity) {
+                star.updateOpacity()
+            }
+            if (star.shouldUpdatePosition) {
+                star.updatePosition()
+            }
         }
-    }, 10)
+    }, 5)
 </script>
 
 <div id="main">
@@ -119,26 +129,20 @@
         <p class="secondary-text">Software developer by day, musician by night (and sometimes vice versa)</p>
     </div>
     
-    <br class="desktop-only" />
-    
     <div class="section">
         <h2>Check out my code!</h2>
-        <a class="secondary-text" href="https://github.com/perrinswanson">github.com/perrinswanson</a>
+        <a class="secondary-text" href="https://github.com/perrinswanson">github.com/<wbr />perrinswanson</a>
     </div>
     
     <div class="section">
         <h2>Check out my music!</h2>
-        <a class="secondary-text" href="https://perrinswanson.bandcamp.com/">perrinswanson.bandcamp.com</a>
+        <a class="secondary-text" href="https://perrinswanson.bandcamp.com/">perrinswanson<wbr />.bandcamp.com</a>
     </div>
-    
-    <br class="desktop-only" />
     
     <div class="section">
         <h2>Say hello!</h2>
-        <a class="secondary-text" href="mailto:perrinswanson@gmail.com">perrinswanson@gmail.com</a>
-        <br />
-        <a class="secondary-text" href="https://twitter.com/perrinswanson">Twitter</a>
-        <br />
+        <a class="secondary-text" href="mailto:perrinswanson@gmail.com">perrinswanson<wbr />@gmail.com</a>
+        <a class="secondary-text" href="https://www.instagram.com/perrinswanson/">Instagram</a>
         <a class="secondary-text" href="https://ca.linkedin.com/in/perrin-swanson-468b30109">LinkedIn</a>
     </div>
 </div>

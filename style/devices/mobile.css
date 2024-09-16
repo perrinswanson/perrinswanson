@@ -15,6 +15,7 @@ h2 {
     display: none;
 }
 
-#main .section {
-    display: block;
+#main {
+    padding: 25px;
+    gap: 25px;
 }
