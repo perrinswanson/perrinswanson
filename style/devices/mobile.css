@@ -11,11 +11,10 @@ h2 {
     font-size: 20pt;
 }
 
-.desktop-only {
-    display: none;
+#content {
+    flex-direction: column;
 }
 
 #main {
     padding: 25px;
-    gap: 25px;
 }

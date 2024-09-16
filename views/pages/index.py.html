@@ -4,11 +4,12 @@
 <div id="background"></div>
 <script>
     const sizes = Array.prototype.concat(
-        Array(20).fill(1),
-        Array(10).fill(2),
-        Array(3).fill(3),
-        Array(2).fill(4),
-        Array(1).fill(5)
+        Array(200).fill(1),
+        Array(100).fill(2),
+        Array(30).fill(3),
+        Array(20).fill(4),
+        Array(10).fill(5),
+        Array(1).fill(20)
     );
     const colours = Array.prototype.concat(
         Array(10).fill("#FFFFFF"),
@@ -18,14 +19,17 @@
         Array(1).fill("#abfff4")
     );
     const alphaSpeeds = Array.prototype.concat(
-        Array(20).fill(1),
-        Array(2).fill(2),
+        Array(50).fill(1),
+        Array(20).fill(2),
+        Array(10).fill(3),
         Array(2).fill(4),
         Array(1).fill(5)
     );
     const movementSpeeds = Array.prototype.concat(
-        Array(20).fill(1),
+        Array(10).fill(1),
         Array(5).fill(2),
+        Array(5).fill(3),
+        Array(5).fill(4),
         Array(3).fill(5),
         Array(1).fill(10)
     );
@@ -124,33 +128,59 @@
 </script>
 
 <div id="main">
-    <div class="section">
+    <div id="title" class="section">
         <h1>Perrin Swanson</h1>
         <p class="secondary-text">Software developer by day, musician by night (and sometimes vice versa)</p>
     </div>
     
-    <div class="section">
-        <h2>Check out my work!</h2>
-        <div>
-            <a href="https://bctracker.ca">BCTracker</a>
-            <span class="secondary-text">• Full stack developer</span>
+    <div id="content">
+        <div class="section-list">
+            <div class="section">
+                <h2>About me!</h2>
+                <div>
+                    Pronouns:
+                    <span class="secondary-text">He/him</span>
+                </div>
+                <div>
+                    Location:
+                    <span class="secondary-text">Vancouver, Canada</span>
+                </div>
+                <p class="secondary-text">
+                    I'm a software developer, music writer and player, hiker/backpacker, public transit enthusiast, fantasy book reader, and gamer of both the board and video varieties.
+                </p>
+                <p class="secondary-text">
+                    I graduated with distinction from Kwantlen Polytechnic University in 2019, receiving a Bachelor of Technology in Information Technology.
+                    I'm currently a member of the Richmond-Delta Youth Orchestra board of directors, and have volunteered as a percussionist for over ten years.
+                    I've hiked the West Coast Trail four times, and done dozens of other hikes around south-western BC.
+                </p>
+                <p class=secondary-text>
+                    There's not much else to see here at the moment, but feel free to check out some of the stuff I've worked on as well as my music!
+                </p>
+            </div>
         </div>
-        <div>
-            <a href="https://salussafety.io">SALUS</a>
-            <span class="secondary-text">• iOS developer</span>
+        <div class="section-list">
+            <div class="section">
+                <h2>Check out my work!</h2>
+                <div>
+                    <a href="https://bctracker.ca">BCTracker</a>
+                    <span class="secondary-text">• Full stack developer</span>
+                </div>
+                <div>
+                    <a href="https://salussafety.io">SALUS</a>
+                    <span class="secondary-text">• iOS developer</span>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Check out my music!</h2>
+                <a href="https://perrinswanson.bandcamp.com/">Bandcamp</a>
+                <a href="https://soundcloud.com/perrinswanson">Soundcloud</a>
+            </div>
+            <div id="contact" class="section">
+                <h2>Say hello!</h2>
+                <a href="mailto:perrinswanson@gmail.com">perrinswanson<wbr />@gmail.com</a>
+                <a href="https://www.instagram.com/perrinswanson/">Instagram</a>
+                <a href="https://ca.linkedin.com/in/perrin-swanson-468b30109">LinkedIn</a>
+            </div>
         </div>
-    </div>
-    
-    <div class="section">
-        <h2>Check out my music!</h2>
-        <a href="https://perrinswanson.bandcamp.com/">Bandcamp</a>
-        <a href="https://soundcloud.com/perrinswanson">Soundcloud</a>
-    </div>
-    
-    <div class="section">
-        <h2>Say hello!</h2>
-        <a href="mailto:perrinswanson@gmail.com">perrinswanson<wbr />@gmail.com</a>
-        <a href="https://www.instagram.com/perrinswanson/">Instagram</a>
-        <a href="https://ca.linkedin.com/in/perrin-swanson-468b30109">LinkedIn</a>
     </div>
 </div>

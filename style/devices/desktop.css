@@ -11,11 +11,11 @@ h2 {
     font-size: 24pt;
 }
 
-.mobile-only {
-    display: none;
+#content {
+    flex-direction: row;
 }
 
 #main {
-    padding: 50px;
-    gap: 25px;
+    padding: 25px;
+    max-width: 900px;
 }
