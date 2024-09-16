@@ -2,7 +2,7 @@
 from bottle import template, run, static_file, get
 
 # Increase the version to force CSS reload
-VERSION = 0
+VERSION = 1
 
 def page(name, **kwargs):
     return template(f'pages/{name}.py', version=VERSION, **kwargs)
