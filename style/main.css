@@ -1,11 +1,10 @@
 
 a {
-    color: white;
+    color: #B8D3FF;
     text-decoration: none;
 }
 
 a:hover {
-    color: white;
     text-decoration: underline;
 }
 
