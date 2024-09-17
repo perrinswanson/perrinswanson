@@ -27,6 +27,14 @@ h2 {
     margin: 0px;
 }
 
+hr {
+    border-color: #696969;
+    border-width: 0px;
+    border-bottom-width: 1px;
+    align-self: stretch;
+    margin: 5px 0px;
+}
+
 html {
     height: 100%;
     width: 100%;

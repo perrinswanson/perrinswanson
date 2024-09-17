@@ -5,11 +5,11 @@
 <script>
     const sizes = Array.prototype.concat(
         Array(200).fill(1),
-        Array(100).fill(2),
+        Array(200).fill(2),
         Array(30).fill(3),
         Array(20).fill(4),
         Array(10).fill(5),
-        Array(1).fill(20)
+        Array(1).fill(10)
     );
     const colours = Array.prototype.concat(
         Array(10).fill("#FFFFFF"),
@@ -35,10 +35,10 @@
     );
     
     class Star {
-        constructor(element, shouldUpdateOpacity, shouldUpdatePosition) {
+        constructor(element) {
             this.element = element;
-            this.shouldUpdateOpacity = shouldUpdateOpacity;
-            this.shouldUpdatePosition = shouldUpdatePosition;
+            this.shouldUpdateOpacity = Math.random() < 0.6;
+            this.shouldUpdatePosition = Math.random() < 0.4;
             this.reset(false);
         }
         
@@ -97,22 +97,20 @@
         }
     }
     
-    const min = screen.width / 6
-    const max = screen.width / 3
-    const count = min + (Math.random() * (max - min))
+    const min = screen.width / 6;
+    const max = screen.width / 3;
+    const count = min + (Math.random() * (max - min));
     
-    const stars = []
-    const backgroundElement = document.getElementById("background")
+    const stars = [];
+    const backgroundElement = document.getElementById("background");
     
     for (i = 0; i < count; i++) {
-        const element = document.createElement("div")
-        element.className = "star"
-        const shouldUpdateOpacity = Math.random() < 0.6
-        const shouldUpdatePosition = Math.random() < 0.4
+        const element = document.createElement("div");
+        element.className = "star";
         
-        stars.push(new Star(element, shouldUpdateOpacity, shouldUpdatePosition))
+        stars.push(new Star(element));
         
-        backgroundElement.appendChild(element)
+        backgroundElement.appendChild(element);
     }
     
     setInterval(function() {
@@ -177,9 +175,10 @@
             </div>
             <div id="contact" class="section">
                 <h2>Say hello!</h2>
-                <a href="mailto:perrinswanson@gmail.com">perrinswanson<wbr />@gmail.com</a>
                 <a href="https://www.instagram.com/perrinswanson/">Instagram</a>
                 <a href="https://ca.linkedin.com/in/perrin-swanson-468b30109">LinkedIn</a>
+                <hr />
+                <a href="mailto:perrinswanson@gmail.com">perrinswanson<wbr />@gmail.com</a>
             </div>
         </div>
     </div>
