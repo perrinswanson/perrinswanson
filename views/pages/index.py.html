@@ -118,10 +118,12 @@
         backgroundElement.appendChild(element);
     }
     
-    const redHex = selectRandom(hexDigits);
-    const greenHex = selectRandom(hexDigits);
-    const blueHex = selectRandom(hexDigits);
-    document.body.style.backgroundColor = "#" + redHex + greenHex + blueHex;
+    const background1 = "#" + selectRandom(hexDigits) + selectRandom(hexDigits) + selectRandom(hexDigits);
+    const background2 = "#" + selectRandom(hexDigits) + selectRandom(hexDigits) + selectRandom(hexDigits);
+    const background3 = "#" + selectRandom(hexDigits) + selectRandom(hexDigits) + selectRandom(hexDigits);
+    
+    document.body.style.backgroundColor = background1;
+    document.body.style.backgroundImage = "linear-gradient(to bottom, " + background1 + ", " + background2 + ", " + background3 + ")"
     
     setInterval(function() {
         for (star of stars) {
