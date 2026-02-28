@@ -9,6 +9,7 @@ a:hover {
 }
 
 body {
+    background-color: black;
     color: white;
     font-family: "Cabin", sans-serif;
     margin: 0px;
@@ -68,7 +69,6 @@ p {
 }
 
 #background {
-    background-color: black;
     bottom: 0px;
     left: 0px;
     overflow: hidden;
