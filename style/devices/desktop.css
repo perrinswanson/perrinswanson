@@ -8,7 +8,7 @@ h1 {
 }
 
 h2 {
-    font-size: 24pt;
+    font-size: 22pt;
 }
 
 #content {
@@ -18,4 +18,14 @@ h2 {
 #main {
     padding: 25px;
     max-width: 900px;
+}
+
+#title {
+    align-items: center;
+    text-align: center;
+}
+
+#title .content {
+    align-items: center;
+    text-align: center;
 }

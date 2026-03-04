@@ -57,9 +57,16 @@ p {
     padding: 25px;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    z-index: 1;
+}
+
+.section .content {
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     gap: 5px;
-    z-index: 1;
 }
 
 .section-list {
@@ -68,6 +75,10 @@ p {
     flex-direction: column;
     gap: 25px;
     align-items: stretch;
+}
+
+#about .content {
+    gap: 15px;
 }
 
 #background {
@@ -94,9 +105,4 @@ p {
     flex-direction: column;
     align-items: stretch;
     gap: 25px;
-}
-
-#title {
-    align-items: center;
-    text-align: center;
 }
