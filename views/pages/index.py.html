@@ -3,6 +3,8 @@
 
 <div id="background"></div>
 <script>
+    const movingLeft = Math.random() < 0.5
+    
     const hexDigits = [
         "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B", "0C", "0D", "0E", "0F",
         "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "1A", "1B", "1C", "1D", "1E", "1F"
@@ -54,7 +56,11 @@
             this.alphaSpeed = selectRandom(movementSpeeds);
             
             if (end) {
-                this.left = screen.width + 10;
+                if (movingLeft) {
+                    this.left = screen.width + 10;
+                } else {
+                    this.left = -10;
+                }
             } else {
                 this.left = Math.floor(Math.random() * screen.width);
             }
@@ -92,12 +98,22 @@
         }
         
         updatePosition() {
-            this.left -= this.movementSpeed / 10;
-            
-            if (this.left < -10) {
-                this.reset(true);
+            if (movingLeft) {
+                this.left -= this.movementSpeed / 10;
+                
+                if (this.left < -10) {
+                    this.reset(true);
+                } else {
+                    this.element.style.left = Math.floor(this.left) + "px";
+                }
             } else {
-                this.element.style.left = Math.floor(this.left) + "px";
+                this.left += this.movementSpeed / 10;
+                
+                if (this.left > screen.width + 10) {
+                    this.reset(true);
+                } else {
+                    this.element.style.left = Math.floor(this.left) + "px";
+                }
             }
         }
     }
