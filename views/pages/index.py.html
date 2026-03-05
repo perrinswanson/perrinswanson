@@ -149,10 +149,14 @@
 
 <script>
     // Script for background-related logic
-    const maxColourValue = 32;
+    const maxColourValue = 64;
     
     function getRandomColour() {
-        return Math.floor(Math.random() * maxColourValue);
+        const value = Math.floor(Math.random() * maxColourValue);
+        if (value > 32 && value < 56) {
+            return getRandomColour();
+        }
+        return value;
     }
     
     function toHex(value) {
@@ -232,7 +236,7 @@
         if (background3.isComplete()) {
             background3 = new Background(background3);
         }
-    }, 250);
+    }, 100);
 </script>
 
 <div id="main">
