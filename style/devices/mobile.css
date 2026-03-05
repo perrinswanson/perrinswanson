@@ -11,10 +11,21 @@ h2 {
     font-size: 20pt;
 }
 
+.desktop-only {
+    display: none !important;
+}
+
 #content {
     flex-direction: column;
 }
 
 #main {
     padding: 25px;
+}
+
+#toggle-content-button {
+    align-self: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 10px;
 }

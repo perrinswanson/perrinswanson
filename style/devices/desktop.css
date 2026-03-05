@@ -11,6 +11,10 @@ h2 {
     font-size: 22pt;
 }
 
+.mobile-only {
+    display: none !important;
+}
+
 #content {
     flex-direction: row;
 }
@@ -28,4 +32,16 @@ h2 {
 #title .content {
     align-items: center;
     text-align: center;
+}
+
+#toggle-content-button {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+#toggle-content-button:hover {
+    background-color: rgba(69, 69, 69, 0.7);
+    --image-colour: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
 }

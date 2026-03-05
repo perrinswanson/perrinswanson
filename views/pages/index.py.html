@@ -299,4 +299,24 @@
             </div>
         </div>
     </div>
+    
+    <div id="toggle-content-button" onclick="toggleContent()">
+        <div class="visible">
+            % include('components/svg.py.html', name='visible')
+        </div>
+        <div class="visible mobile-only">Hide page</div>
+        <div class="hidden">
+            % include('components/svg.py.html', name='hidden')
+        </div>
+        <div class="hidden mobile-only">Show page</div>
+    </div>
 </div>
+
+<script>
+    // Script for content toggle
+    document.getElementById("main").classList.add("content-visible");
+    function toggleContent() {
+        document.getElementById("main").classList.toggle("content-visible");
+        document.getElementById("main").classList.toggle("content-hidden");
+    }
+</script>
