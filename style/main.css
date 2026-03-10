@@ -114,39 +114,11 @@ svg {
 }
 
 #main.content-hidden #title {
-    animation-name: fadeOut;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
+    display: none;
 }
 
 #main.content-hidden #content {
-    animation-name: fadeOut;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-    1% { opacity: 0; visibility: hidden; }
-    2% { opacity: 0; visibility: visible;}
-    100% { opacity: 1; visibility: visible;}
-}
-
-#main.content-visible #title {
-    animation-name: fadeIn;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-}
-
-#main.content-visible #content {
-    animation-name: fadeIn;
-    animation-duration: 0.3s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fadeOut {
-    1% { opacity: 1; visibility: visible;}
-    99% { opacity: 0; visibility: visible;}
-    100% { opacity: 0; visibility: hidden; }
+    display: none;
 }
 
 #main.content-hidden #toggle-content-button .visible {
