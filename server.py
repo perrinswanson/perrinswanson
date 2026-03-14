@@ -1,5 +1,5 @@
 
-from bottle import template, run, static_file, get
+from bottle import template, run, static_file, get, request
 
 # Increase the version to force CSS reload
 VERSION = 3
@@ -22,10 +22,14 @@ def style(name):
 def images(name):
     return static_file(name, root='./images')
 
+@get('/javascript/<name:path>')
+def javascript(name):
+    return static_file(name, root='./javascript')
+
 # =============================================================
 # HTML
 # =============================================================
 
 @get('/')
 def index_page():
-    return page('index')
+    return page('index', mode=request.query.get('mode'))
