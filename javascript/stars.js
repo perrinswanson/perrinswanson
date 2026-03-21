@@ -1,7 +1,7 @@
 
 const movingLeft = Math.random() < 0.5
 
-const sizes = Array.prototype.concat(
+const starSizes = Array.prototype.concat(
     Array(200).fill(1),
     Array(200).fill(2),
     Array(30).fill(3),
@@ -9,21 +9,21 @@ const sizes = Array.prototype.concat(
     Array(10).fill(5),
     Array(1).fill(10)
 );
-const colours = Array.prototype.concat(
+const starColours = Array.prototype.concat(
     Array(10).fill("#FFFFFF"),
     Array(1).fill("#FFFAB8"),
     Array(1).fill("#FFAA3B"),
     Array(1).fill("#C40000"),
     Array(1).fill("#abfff4")
 );
-const alphaSpeeds = Array.prototype.concat(
+const starAlphaSpeeds = Array.prototype.concat(
     Array(50).fill(1),
     Array(20).fill(2),
     Array(10).fill(3),
     Array(2).fill(4),
     Array(1).fill(5)
 );
-const movementSpeeds = Array.prototype.concat(
+const starMovementSpeeds = Array.prototype.concat(
     Array(10).fill(1),
     Array(5).fill(2),
     Array(5).fill(3),
@@ -45,10 +45,10 @@ class Star {
     }
     
     reset(end) {
-        this.size = selectRandom(sizes) / 2;
-        this.colour = selectRandom(colours);
-        this.movementSpeed = selectRandom(alphaSpeeds);
-        this.alphaSpeed = selectRandom(movementSpeeds);
+        this.size = selectRandom(starSizes) / 2;
+        this.colour = selectRandom(starColours);
+        this.movementSpeed = selectRandom(starAlphaSpeeds);
+        this.alphaSpeed = selectRandom(starMovementSpeeds);
         
         if (end) {
             if (movingLeft) {
@@ -113,14 +113,13 @@ class Star {
     }
 }
 
-const min = screen.width / 6;
-const max = screen.width / 3;
-const count = min + (Math.random() * (max - min));
+const minStars = screen.width / 6;
+const maxStars = screen.width / 3;
+const starCount = minStars + (Math.random() * (maxStars - minStars));
 
 const stars = [];
-const backgroundElement = document.getElementById("background");
 
-for (i = 0; i < count; i++) {
+for (i = 0; i < starCount; i++) {
     const element = document.createElement("div");
     element.className = "star";
     

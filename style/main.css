@@ -53,6 +53,12 @@ svg {
     height: var(--image-size);
 }
 
+.meteor {
+    position: absolute;
+    height: 2px;
+    border-radius: 1px;
+}
+
 .secondary-text {
     color: #AAAAAA
 }
